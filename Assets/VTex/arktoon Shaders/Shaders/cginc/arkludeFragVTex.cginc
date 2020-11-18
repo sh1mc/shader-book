@@ -8,7 +8,7 @@ float4 fontlinecol(float index) {
 
 int col2byte(float4 col, float x)
 {
-    return (int)(int)(col[floor(x / 8)] * 256);
+    return (int)(col[floor(x / 8.0)] * 0xff);
 }
 int byte2bit(int fontbyte, int x) {
     int mask = (0x0000000f << x);
@@ -82,10 +82,10 @@ float4 VTex (float2 uv)
     float IS_DARK = _IsDark;
     
     float iswithinfont = 1 - clamp( 
-        step(FONTWIDTH - 0.5, fontxy.x) + 
-        step(FONTHEIGHT - 0.5, fontxy.y) + 
-        step(fontxy.x, -0.5) +
-        step(fontxy.y, -0.5)
+        step(FONTWIDTH, fontxy.x) + 
+        step(FONTHEIGHT, fontxy.y) + 
+        step(fontxy.x, 0) +
+        step(fontxy.y, 0)
         , 0, 1);
     float c = clamp(fontbit, 0, 1) * iswithinpage * iswithinfont;
     c = lerp(1 - c, c, IS_DARK);
