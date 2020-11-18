@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FonTex:
-        m_Texture: {fileID: 2800000, guid: 5893e6758929b304bb2c09941a55f4f3, type: 3}
+        m_Texture: {fileID: 2800000, guid: f50f82fd14ab1f3479d77960fed8cf13, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlossBlendMask:
@@ -140,7 +140,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TexTex:
-        m_Texture: {fileID: 2800000, guid: 25a538442a2a9214d8a17d1e398b836c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6d56b207eb5fe5e459d9398d0dea1521, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -167,8 +167,8 @@ Material:
     - _IsDark: 0
     - _IsHorizontal: 0
     - _LightSampling: 0
-    - _LineHeight: 46
-    - _LineWidth: 46
+    - _LineHeight: 50
+    - _LineWidth: 50
     - _MatcapBlend: 1
     - _MatcapBlendMode: 3
     - _MatcapNormalMix: 1
@@ -186,7 +186,7 @@ Material:
     - _OutlineUseColorShift: 0
     - _OutlineValueFromBase: 1
     - _OutlineWidth: 0.1
-    - _Page: 0
+    - _Page: -1
     - _Parallax: 0.02
     - _PointAddIntensity: 1
     - _PointShadowSteps: 2

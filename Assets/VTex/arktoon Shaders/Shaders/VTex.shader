@@ -9,6 +9,7 @@ Shader "arktoon/AlphaCutoutVTex" {
         _FonTex ("Font Texture", 2D) = "white" {}
         _TexTex ("Book Texture", 2D) = "white" {}
         _Page ("Page", Float) = 0
+        _LineTextsNum("Page", Int) = 28
         [MaterialToggle] _IsDark ("Dark Mode", Float ) = 0
         [MaterialToggle] _IsHorizontal ("Horizontal", Float ) = 0
         _Aspect ("Aspect Ratio", Range(0.2, 5)) = 1.4
@@ -181,6 +182,7 @@ Shader "arktoon/AlphaCutoutVTex" {
             uniform float _Aspect;
             uniform float _LineWidth;
             uniform float _LineHeight;
+            uniform float _LineTextsNum;
 
             #include "cginc/arkludeDecl.cginc"
             #include "cginc/arkludeOther.cginc"

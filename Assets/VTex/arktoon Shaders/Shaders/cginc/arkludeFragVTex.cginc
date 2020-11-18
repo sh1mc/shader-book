@@ -20,20 +20,21 @@ float4 VTex (float2 uv)
 {   
     float MARGIN = 0.02;
     float scale = 1;
-    float MARGIN_TOP = 13;
-    float MARGIN_BOTTOM = 14;
-    float XHEIGHT = 1;
-    float YHEIGHT = 1;
+    float MARGIN_TOP = 3;
+    float MARGIN_BOTTOM = 15;
+    float XSIZE = 1;
+    float YSIZE = 1;
+    
     float LINEWIDTH = floor(_LineWidth);
     float LINEHEIGHT = floor(_LineHeight);
     float IS_HORIZONTAL = _IsHorizontal;
-    float2 xy = float2(uv.x / XHEIGHT * LINEWIDTH, (uv.y / YHEIGHT) * LINEHEIGHT) + float2(0, -MARGIN_TOP);
-    float iswithinpage = step(-0.1, xy.x * xy.y) * step(MARGIN_BOTTOM, LINEHEIGHT - xy.y);
+    float2 xy = float2(uv.x * LINEWIDTH, uv.y * LINEHEIGHT) - float2(0, MARGIN_BOTTOM);
+    float iswithinpage = (0 <= xy.x * xy.y) * (LINEHEIGHT > xy.y + MARGIN_TOP + MARGIN_BOTTOM);//(MARGIN_BOTTOM > LINEHEIGHT - xy.y);
     xy = IS_HORIZONTAL * xy + (1 - IS_HORIZONTAL) * float2(LINEHEIGHT - xy.y, xy.x);
     float BOOKWIDTH = 1024;
     float BOOKHEIGHT = 1024;
     float PAGE = _Page;
-    float charaindex = floor(LINEHEIGHT - xy.y - 1) * (LINEWIDTH - MARGIN_BOTTOM) - (MARGIN_TOP + 1) + floor(xy.x) + LINEWIDTH * (LINEHEIGHT - MARGIN_BOTTOM) * floor(PAGE + 0.5);
+    float charaindex = floor(LINEHEIGHT - xy.y - 1) * (_LineTextsNum) - (MARGIN_BOTTOM + 1) + floor(xy.x) + LINEWIDTH * (_LineTextsNum) * floor(PAGE + 0.5);
     float2 charaxy = float2((charaindex % BOOKWIDTH + 0.4) / BOOKWIDTH, 1 - (floor(charaindex / BOOKWIDTH) + 0.4) / BOOKHEIGHT);
     float4 characol = tex2D(_TexTex, charaxy);
     float unicode = floor(characol.g * 256 + 0.4) * 256 + floor(characol.b * 256);
@@ -69,13 +70,13 @@ float4 VTex (float2 uv)
         byte2bit(fontbyte[1], bitindex[1]) * 2 +
         byte2bit(fontbyte[2], bitindex[2]) +
         byte2bit(fontbyte[3], bitindex[0]) * 2 +
-        byte2bit(fontbyte[4], bitindex[1]) * 10 +
+        byte2bit(fontbyte[4], bitindex[1]) * 40 +
         byte2bit(fontbyte[5], bitindex[2]) * 2 +
         byte2bit(fontbyte[6], bitindex[0]) +
         byte2bit(fontbyte[7], bitindex[1]) * 2 +
         byte2bit(fontbyte[8], bitindex[2]) ;
     
-    float fontbit = ((float)fontbitsum) / 22;
+    float fontbit = ((float)fontbitsum) / 53;
     */
     float fontbit = byte2bit(fontbyte[4], bitindex[1]);
     
