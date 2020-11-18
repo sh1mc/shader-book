@@ -6,7 +6,7 @@ public sealed class BookEditor : EditorWindow
 {
     private int m_width = 1024;
     private int m_height = 1024;
-    private int m_linenum = 64;
+    private int m_linenum = 28;
     private string m_path = "Assets/VTex/books/sample.png";
     private string m_text;
 
@@ -78,7 +78,7 @@ public sealed class BookEditor : EditorWindow
             DotTexture(texture, height, width, c, count);
             count++;
             if (c == '\n') {
-                while (count % linenum != 0) {
+                while ((count) % linenum != 0) {
                     DotTexture(texture, height, width, ' ', count);
                     count++;
                 }

@@ -34,7 +34,7 @@ float4 VTex (float2 uv)
     float BOOKWIDTH = 1024;
     float BOOKHEIGHT = 1024;
     float PAGE = _Page;
-    float charaindex = floor(LINEHEIGHT - xy.y - 1) * (_LineTextsNum) - (MARGIN_BOTTOM + 1) + floor(xy.x) + LINEWIDTH * (_LineTextsNum) * floor(PAGE + 0.5);
+    float charaindex = floor(_LineTextsNum - xy.y) * (_LineTextsNum) + floor(xy.x + (_LineTextsNum - MARGIN_TOP - MARGIN - 3)) + LINEWIDTH * (_LineTextsNum) * floor(PAGE + 0.5);
     float2 charaxy = float2((charaindex % BOOKWIDTH + 0.4) / BOOKWIDTH, 1 - (floor(charaindex / BOOKWIDTH) + 0.4) / BOOKHEIGHT);
     float4 characol = tex2D(_TexTex, charaxy);
     float unicode = floor(characol.g * 256 + 0.4) * 256 + floor(characol.b * 256);
